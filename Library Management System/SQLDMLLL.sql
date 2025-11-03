@@ -448,41 +448,6 @@ WHERE Member_ID = (
 );
 
 
-	select * from Member;
-	select * from Borrow;
-	select * from Reservation; 
-
-
-		SET IDENTITY_INSERT Member ON;
-
-INSERT INTO Member (Member_ID, Name, Email, Phone, Address, Membership_Type, Join_Date, Expiry_Date, Status, last_login)
-VALUES 
-(22, 'Jane Smith', 'jane@example.com', '222-222-2222', '102 Second St', 'Premium', '2023-06-15', '2024-06-15', 'Expired', '2024-06-14 15:30:00');
-
-SET IDENTITY_INSERT Member OFF;
-
-SET IDENTITY_INSERT Borrow ON;
-
-INSERT INTO Borrow (Borrow_ID, Member_ID, Book_ID, Branch_ID, Fine_ID, Borrow_Date, Due_Date, Return_Date, Status)
-VALUES
-(22, 22, 2, 2, NULL, '2025-10-01', '2025-10-15', NULL, 'Borrowed'),
-(32, 22, 3, 2, 2, '2025-09-22', '2025-10-06', NULL, 'Overdue');  -- example from earlier data
-
-SET IDENTITY_INSERT Borrow OFF;
-
-SET IDENTITY_INSERT Reservation ON;
-
-INSERT INTO Reservation (Reservation_ID, Member_ID, Book_ID, Reservation_Date, Expiry_Date, Status)
-VALUES
-	(7, 22, 5, '2025-10-18', '2025-10-25', 'Fulfilled');
-
-SET IDENTITY_INSERT Reservation OFF;
-
-
-
-delete from Reservation where Reservation_ID = 22;
-
-
 --1. List all books published after 2020
 SELECT * FROM Book b
 	WHERE b.Publication_Year > 2020;
